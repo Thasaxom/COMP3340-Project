@@ -1,2 +1,3 @@
 # COMP3340-Project
-project for university course
+This is a group project for university course World Wide Web Information Systems Development. 
+It is created by Shaumik Baki, Rajan Subedi, and Zachary Rivait.
