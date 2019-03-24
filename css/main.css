@@ -2,20 +2,45 @@ div#container {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-
 }
 
 div#topbar {
 	display: flex;
-	flex-direction: row;
-	
-	
+	flex-direction: row;	
 }
 
 div#content {
 	display: flex;
+	flex-direction: row;	
+}
+
+div#navarea {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+}
+
+div#searcharea {
+	display: flex;
 	flex-direction: row;
+
+}
+
+div#genrearea {
+	display: flex;
+	flex-direction: row;
+
+}
+
+input#searchbar {
 	
+	flex-grow: 1;
+	
+}
+
+button#searchbutton {
+	
+	flex-grow: 1;
 	
 }
 
