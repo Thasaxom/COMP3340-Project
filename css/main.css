@@ -1,0 +1,25 @@
+div#container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+}
+
+div#topbar {
+	display: flex;
+	flex-direction: row;
+	
+	
+}
+
+div#content {
+	display: flex;
+	flex-direction: row;
+	
+	
+}
+
+img#logo {
+	
+	
+}
