@@ -35,7 +35,6 @@ div#searcharea {
 	display: flex;
 	flex-direction: row;
 	padding: 1em;
-
 }
 
 div#genrearea {
@@ -44,15 +43,30 @@ div#genrearea {
 	padding: 1em;
 }
 
+div#loginarea {
+	display: flex;
+	flex-direction: row;
+	padding: 1em;
+}
+
 input#searchbar {
-	
 	flex-grow: 1;
 	flex-basis:88%;
 }
 
-button#searchbutton {
-	
+input#userbar {
+	margin-right: 10px
+}
+
+input#passbar {
+	margin-right: 10px
+}
+
+button#searchbutton {	
 	flex-grow: 1;
+}
+
+button#loginbutton {	
 	
 }
 
