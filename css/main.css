@@ -1,3 +1,7 @@
+body {
+	font-family: Arial;
+}
+
 div#container {
 	display: flex;
 	flex-direction: column;
@@ -23,25 +27,31 @@ div#navarea {
 div#searcharea {
 	display: flex;
 	flex-direction: row;
+	padding: 1em;
 
 }
 
 div#genrearea {
 	display: flex;
 	flex-direction: row;
-
+	padding: 1em;
 }
 
 input#searchbar {
 	
 	flex-grow: 1;
-	
+	flex-basis:88%;
 }
 
 button#searchbutton {
 	
 	flex-grow: 1;
 	
+}
+
+h1#title {
+	padding-left: 1em;
+	margin: 0;
 }
 
 img#logo {
