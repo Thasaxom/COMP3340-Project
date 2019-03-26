@@ -33,11 +33,13 @@
 						<button class="genrebutton">Romance</button>						
 					</div>
 					<div id="loginarea">
-						<form action="login_user" method="post">
+						<form action="login.php" method="post">
 							<input id="userbar" type="text" placeholder="Username">
 							<input id="passbar" type="password" placeholder="Password">
 							<input type="submit" value="Log In">
+							<input type="button" onclick="location.href = 'register.php';" value="Register">
 						</form>
+						
 					</div>
 				</div>
 			</div>
