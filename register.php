@@ -52,21 +52,21 @@
         <div>
             <label>First Name</label>
             <input type="text" placeholder="First Name" name="fname" value="<?php
-            if(isset($_SESSION["r_autofill"])){
+            if(isset($_SESSION['r_autofill'])){
         
 
-                if(count($_SESSION["r_autofill"])==2){
+                if(count($_SESSION['r_autofill'])==2){
                     $_SESSION["r_autofill"][0] = $fn;
                     $_SESSION["r_autofill"][1] = $ln;
                 }
-                if(count($_SESSION["r_autofill"])==3){
+                if(count($_SESSION['r_autofill'])==3){
                     $_SESSION["r_autofill"][0] = $fn;
                     $_SESSION["r_autofill"][1] = $ln;
                     $_SESSION["r_autofill"][2] = $em;
                 }
                 
                 
-                unset($_SESSION["r_autofill"]);
+                unset($_SESSION['r_autofill']);
             }
             
             

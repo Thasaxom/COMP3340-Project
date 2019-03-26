@@ -24,10 +24,12 @@
         if($p1!=$p2){array_push($errors,"Password do not match.");}
         
         // check email
-        $sql = "select * from users where user = '$email'";
+        $sql = "SELECT * FROM USERS WHERE uname = '$email'";
         $sqlresult = mysqli_query($db,$sql);
         
-        if(mysqli_num_rows($sqlresult)>0){array_push($errors,"Email already exists.");}
+        if(mysqli_num_rows($sqlresult)!=0) {
+			array_push($errors,"Email already exists.");
+		}
         
 
         if(count($errors)==0){
@@ -36,9 +38,14 @@
             $date = date('H:i:s');
             $hashpwd = sha1($p1.$date);
 
-            $sql = "INSERT into users (uname, upasshashed, salt,fname,lname) VALUES ('$email','$hashpwd','$date','$fname','$lname');";
+            $sql = "INSERT INTO USERS (admin,uname,upasshashed,salt,fname,lname) VALUES (FALSE,'$email','$hashpwd','$date','$fname','$lname');";
 
-            mysqli_query($db,$sql);
+            $result = mysqli_query($db,$sql);
+			if($result == false) {
+				echo "query failure";
+				exit();
+			}
+			
             header("Location:  register.php?register=success");
             exit();
         }else{
