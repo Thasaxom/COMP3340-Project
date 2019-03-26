@@ -4,7 +4,6 @@
 
     $errors = array();
 
-
     if(isset($_POST['submit'])){
 
         include_once 'config.php';
@@ -48,7 +47,8 @@
 			
             header("Location:  register.php?register=success");
             exit();
-        }else{
+        }
+		else{
             
             $autofill = array();
             array_push($autofill,$fname);

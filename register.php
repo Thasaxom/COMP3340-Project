@@ -6,14 +6,13 @@
     $ln ='';
     $em = '';
 
-		// admin
+	// admin
 	if(isset($_SESSION["admin"]) && $_SESSION["admin"] === true){
 		header("Location: index.php");
 		exit();
 	} 
 	//  user
-
-	if(isset($_SESSION["user"]) && $_SESSION["user"] === true)){
+	if(isset($_SESSION["user"]) && $_SESSION["user"] === true){
 		header("Location: index.php");
 		exit();
 	}
@@ -30,12 +29,12 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <?php //include_once("cdn.php"); ?>
+
 </head>
 
 <body>
 
-    <?php //include_once("nav.php");?>
+
     <div>
         <h2>Register</h2>
     </div>
@@ -100,9 +99,6 @@
         <div>
             <button type="submit" name="submit">Register</button>
         </div>
-        <p>
-            Already a member? <a href="login.php">Sign in</a>
-        </p>
     </form>
 </body>
 

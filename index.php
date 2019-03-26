@@ -1,5 +1,14 @@
 <?php
+	
 	session_start();
+		
+	$loggedin = false;
+	$email = "";
+	
+	if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+		$loggedin = true;
+		$email = $_SESSION["email"];
+	}
 ?>
 
 <html>
@@ -12,7 +21,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	
-	<body>
+	<body onload="loginUI()">
 		<div id="container">
 			<div id="topbar">				
 				<a href="index.php"><img id="logo" src="images/logo.png"></a>
@@ -32,27 +41,38 @@
 						<button class="genrebutton">Fantasy</button>
 						<button class="genrebutton">Romance</button>						
 					</div>
-					<div id="loginarea">
-						<form action="login.inc.php" method="post">
-							<?php 							
-								echo "logged in:" . $_SESSION["loggedin"];
-								if(isset($_SESSION["l_errors"])){
-									foreach($_SESSION["l_errors"] as $rer){
-										echo $rer;
-									}
-									unset($_SESSION["l_errors"]);
-								}
-        					?>
-							<input id="userbar" name="email" type="text" placeholder="Username">
-							<input id="passbar" name="pass" type="password" placeholder="Password">
-							<input type="submit" name="submit" value="Log In">
-							<input type="button" onclick="location.href = 'register.php';" value="Register">
-						</form>
-						
+					<script>
+						function loginUI() {
+							
+							var loggedin = <?php echo $loggedin; ?>;
+							var email = '<? echo $email; ?>';
+							alert(loggedin);
+							document.getElementById("test").innerHTML = loggedin;
+							if (loggedin == true) {
+								document.getElementById("guest").style.display = "none";
+								document.getElementById("loggedin").style.display = "flex";
+							}
+						}
+					</script>
+					<div id="loginarea" >
+						<div id="loggedin">
+							<form style="display: none;" action="logout.php">
+								<input type="submit" onclick="loginUI()" value="Logout">
+							</form>
+						</div>
+						<div id="guest">
+							<form action="login.inc.php" method="post">
+								<input id="userbar" name="email" type="text" placeholder="Username">
+								<input id="passbar" name="pass" type="password" placeholder="Password">
+								<input type="submit" onclick="loginUI()" name="submit" value="Log In">	
+							</form>
+							<form action="register.php">
+								<input type="submit" value="Register">
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-			
+			</div>			
 			<div id="content">
 				<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at tempus diam. Cras consequat est at condimentum luctus. Ut gravida aliquet sem vitae tempus. Quisque commodo ultrices odio. Vestibulum tempor augue in convallis facilisis. Nunc congue accumsan neque quis consequat. Mauris lobortis risus eget urna vehicula convallis. Curabitur pharetra mollis rutrum.

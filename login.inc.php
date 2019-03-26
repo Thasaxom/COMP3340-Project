@@ -7,7 +7,9 @@ if(isset($_POST['submit'])){
 
     include_once 'config.php';
 	
+
 	session_start();
+	
 
     $email = mysqli_real_escape_string($db,$_POST['email']);
     $pass = mysqli_real_escape_string($db,$_POST['pass']);
@@ -55,8 +57,8 @@ if(isset($_POST['submit'])){
     $hashpwd = sha1($pass.$salt);
 
     if(hash_equals($hashpwd , $up )){
-        
-        session_start();
+		
+		$_SESSION["loggedin"] = true;
 
         if($ad == "0"){  // start user session
             $_SESSION["user"] = true;
