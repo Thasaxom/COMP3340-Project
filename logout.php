@@ -2,10 +2,16 @@
 
 session_start();
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+// logout admin
+if(isset($_SESSION["admin"]) && $_SESSION["admin"] === true){
     session_destroy();
     header("Location: index.php");
-}else{
+} // logout user
+elseif(isset($_SESSION["user"]) && $_SESSION["user"] === true)){
+    session_destroy();
+    header("Location: index.php");
+}
+else{ //guest
     header("Location: index.php");
 }
 

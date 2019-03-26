@@ -15,16 +15,17 @@ if(isset($_POST['submit'])){
     if(empty($email)){array_push($errors,"Email is required.");}
     if(empty($pass)){array_push($errors,"Password is required.");}
 
-    $sql = "select user from users where user = '$email'";
+    $sql = "select uname from users where uname = '$email'";
     $sqlresult = mysqli_query($db,$sql);
     $salt= '';  
     $up = '';
+    $ad = '';
     
     if(mysqli_num_rows($sqlresult)==1){
        // user exists
        
        // salt and hash password
-       $sqls = "select salt, pass from users where user = '$email'";
+       $sqls = "select admin, salt, upasshashed from users where uname = '$email'";
        
        if ($stmt = mysqli_prepare($db, $sqls)) {
 
@@ -32,12 +33,13 @@ if(isset($_POST['submit'])){
         mysqli_stmt_execute($stmt);
     
         /* bind result variables */
-        mysqli_stmt_bind_result($stmt,$s,$p);
+        mysqli_stmt_bind_result($stmt,$a,$s,$p);
     
         /* fetch values */
         while (mysqli_stmt_fetch($stmt)) {
             $salt = $s;
             $up = $p;
+            $ad = $a;
         }
     
         /* close statement */
@@ -51,8 +53,15 @@ if(isset($_POST['submit'])){
         
         session_start();
 
-        $_SESSION["loggedin"] = true;
-        $_SESSION["email"] = $email;
+        if($ad == "0"){  // start user session
+            $_SESSION["user"] = true;
+            $_SESSION["email"] = $email;
+        }
+
+        if($ad == "1"){ // start admin session 
+            $_SESSION["admin"] = true;
+            $_SESSION["email"] = $email;
+        }
         
         header("Location: index.php");
     }
@@ -70,7 +79,7 @@ if(isset($_POST['submit'])){
     
 
     }
-    else{
+    else{ // not found
         array_push($errors,"Invalid username or password.");
         $autofill = array();
         array_push($autofill,$email);
@@ -78,7 +87,7 @@ if(isset($_POST['submit'])){
         $_SESSION["l_errors"] = $errors;
         $_SESSION["l_autofill"] = $autofill;
         
-        header("Location:  login.php?login=usernotfound");
+        header("Location:  login.php?login=failed"); 
         exit();
     }
 
