@@ -2,10 +2,17 @@
 
     session_start();
 
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: index.php");
-        exit;
-    }
+    	// admin
+	if(isset($_SESSION["admin"]) && $_SESSION["admin"] === true){
+		header("Location: index.php");
+		exit();
+	} 
+	//  user
+
+	if(isset($_SESSION["user"]) && $_SESSION["user"] === true)){
+		header("Location: index.php");
+		exit();
+	}
 
 ?>
 
