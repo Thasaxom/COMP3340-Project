@@ -6,6 +6,8 @@
 if(isset($_POST['submit'])){
 
     include_once 'config.php';
+	
+	session_start();
 
     $email = mysqli_real_escape_string($db,$_POST['email']);
     $pass = mysqli_real_escape_string($db,$_POST['pass']);
@@ -15,16 +17,19 @@ if(isset($_POST['submit'])){
     if(empty($email)){array_push($errors,"Email is required.");}
     if(empty($pass)){array_push($errors,"Password is required.");}
 
-    $sql = "select user from users where user = '$email'";
+    $sql = "SELECT uname FROM USERS WHERE uname = '$email'";
     $sqlresult = mysqli_query($db,$sql);
+	if($sqlresult == false) {
+		echo "query failure";
+		exit();
+	}
     $salt= '';  
     $up = '';
     
     if(mysqli_num_rows($sqlresult)==1){
        // user exists
-       
        // salt and hash password
-       $sqls = "select salt, pass from users where user = '$email'";
+       $sqls = "SELECT salt, upasshashed FROM USERS WHERE uname = '$email'";
        
        if ($stmt = mysqli_prepare($db, $sqls)) {
 
@@ -46,14 +51,11 @@ if(isset($_POST['submit'])){
 
     $hashpwd = sha1($pass.$salt);
 
-
     if(hash_equals($hashpwd , $up )){
-        
-        session_start();
-
+                
         $_SESSION["loggedin"] = true;
         $_SESSION["email"] = $email;
-        
+
         header("Location: index.php");
     }
     else{
@@ -64,7 +66,7 @@ if(isset($_POST['submit'])){
         $_SESSION["l_errors"] = $errors;
         $_SESSION["l_autofill"] = $autofill;
 
-        header("Location:  login.php?login=failed");
+        header("Location: index.php?login=failed");
         exit();
     }
     
@@ -78,14 +80,13 @@ if(isset($_POST['submit'])){
         $_SESSION["l_errors"] = $errors;
         $_SESSION["l_autofill"] = $autofill;
         
-        header("Location:  login.php?login=usernotfound");
+        header("Location: index.php?login=usernotfound");
         exit();
     }
 
-
 }
 else{
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 

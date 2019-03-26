@@ -1,5 +1,5 @@
 <?php
-	include("login.php");
+	session_start();
 ?>
 
 <html>
@@ -15,7 +15,7 @@
 	<body>
 		<div id="container">
 			<div id="topbar">				
-				<a href="index.html"><img id="logo" src="images/logo.png"></a>
+				<a href="index.php"><img id="logo" src="images/logo.png"></a>
 				<div id="navarea">
 					<div id="searcharea">
 						<input id="searchbar" type="text" placeholder="Search..">
@@ -33,10 +33,19 @@
 						<button class="genrebutton">Romance</button>						
 					</div>
 					<div id="loginarea">
-						<form action="login.php" method="post">
-							<input id="userbar" type="text" placeholder="Username">
-							<input id="passbar" type="password" placeholder="Password">
-							<input type="submit" value="Log In">
+						<form action="login.inc.php" method="post">
+							<?php 							
+								echo "logged in:" . $_SESSION["loggedin"];
+								if(isset($_SESSION["l_errors"])){
+									foreach($_SESSION["l_errors"] as $rer){
+										echo $rer;
+									}
+									unset($_SESSION["l_errors"]);
+								}
+        					?>
+							<input id="userbar" name="email" type="text" placeholder="Username">
+							<input id="passbar" name="pass" type="password" placeholder="Password">
+							<input type="submit" name="submit" value="Log In">
 							<input type="button" onclick="location.href = 'register.php';" value="Register">
 						</form>
 						
