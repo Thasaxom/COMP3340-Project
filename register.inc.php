@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    
+
     $errors = array();
 
 
@@ -34,7 +34,7 @@
             // hash password
             
             $date = date('H:i:s');
-            $hashpwd = sha1($password.$date);
+            $hashpwd = sha1($p1.$date);
 
             $sql = "INSERT into users (uname, upasshashed, salt,fname,lname) VALUES ('$email','$hashpwd','$date','$fname','$lname');";
 
@@ -42,6 +42,19 @@
             header("Location:  register.php?register=success");
             exit();
         }else{
+            
+            $autofill = array();
+            array_push($autofill,$fname);
+            array_push($autofill,$lname);
+            if(!in_array("Email already exists.",$errors)){
+                array_push($autofill,$email);
+            }
+
+
+            $_SESSION["r_errors"] = $errors;
+            $_SESSION["r_autofill"] = $autofill;
+
+
             header("Location:  register.php?register=error");
             exit();
         }

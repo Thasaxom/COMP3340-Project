@@ -1,36 +1,67 @@
 <?php
 
+    session_start();
 
-	   include("config.php");
-	   session_start();
-	   
-	   if($_SERVER["REQUEST_METHOD"] == "POST") {
-		  
-		  $user_name = mysqli_real_escape_string($db,$_POST['username']);
-		  $password = mysqli_real_escape_string($db,$_POST['password']); 
-		  
-	  
-		  $salt = "SELECT salt FROM users WHERE username = '$user_name'";
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        header("location: index.php");
+        exit;
+    }
 
-		  $hashPassword = sha1($password.$salt);
-
-		  $sql = "SELECT uid FROM users WHERE username = '$user_name' and password = '$hashPassword'";
-		  $result = mysqli_query($db,$sql);
-		  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-		  $active = $row['active'];
-		  
-		  $count = mysqli_num_rows($result);
-		  
-		  // If result matched $user_name and $password, table row must be 1 row
-			
-		  if($count == 1) {
-			 session_register("user_name");
-			 $_SESSION['login_user'] = $user_name;
-			 
-			 header("location: index.php");
-		  }else {
-			 $error = "Your Login Name or Password is invalid";
-		  }
-	   }
-	
 ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php //include_once("cdn.php"); ?>
+</head>
+
+
+<?php //include_once("nav.php");?>
+
+<body>
+    <div>
+        <h2>Login</h2>
+    </div>
+
+    <form action="login.inc.php" method="POST">
+
+        <div>
+            <?php  
+            if(isset($_SESSION["l_errors"])){
+
+               foreach($_SESSION["l_errors"] as $rer){
+                   echo $rer;
+               }
+               unset($_SESSION["l_errors"]);
+            }
+
+        ?>
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="example@example.com" required>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" placeholder="Password" name="pass" required>
+        </div>
+
+        <div>
+            <button type="submit" name="submit">Login</button>
+        </div>
+
+        <p>
+            Dont have account? <a href="register.php">Register</a>
+        </p>
+
+    </form>
+</body>
+
+</html>
+
