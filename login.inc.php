@@ -25,11 +25,13 @@ if(isset($_POST['submit'])){
 	}
     $salt= '';  
     $up = '';
+    $ad = '';
     
     if(mysqli_num_rows($sqlresult)==1){
        // user exists
        // salt and hash password
-       $sqls = "SELECT salt, upasshashed FROM USERS WHERE uname = '$email'";
+
+       $sqls = "SELECT admin, salt, upasshashed FROM USERS WHERE uname = '$email'";
        
        if ($stmt = mysqli_prepare($db, $sqls)) {
 
@@ -37,12 +39,13 @@ if(isset($_POST['submit'])){
         mysqli_stmt_execute($stmt);
     
         /* bind result variables */
-        mysqli_stmt_bind_result($stmt,$s,$p);
+        mysqli_stmt_bind_result($stmt,$a,$s,$p);
     
         /* fetch values */
         while (mysqli_stmt_fetch($stmt)) {
             $salt = $s;
             $up = $p;
+            $ad = $a;
         }
     
         /* close statement */
@@ -52,10 +55,19 @@ if(isset($_POST['submit'])){
     $hashpwd = sha1($pass.$salt);
 
     if(hash_equals($hashpwd , $up )){
-                
-        $_SESSION["loggedin"] = true;
-        $_SESSION["email"] = $email;
+        
+        session_start();
 
+        if($ad == "0"){  // start user session
+            $_SESSION["user"] = true;
+            $_SESSION["email"] = $email;
+        }
+
+        if($ad == "1"){ // start admin session 
+            $_SESSION["admin"] = true;
+            $_SESSION["email"] = $email;
+        }
+        
         header("Location: index.php");
     }
     else{
@@ -72,7 +84,7 @@ if(isset($_POST['submit'])){
     
 
     }
-    else{
+    else{ // not found
         array_push($errors,"Invalid username or password.");
         $autofill = array();
         array_push($autofill,$email);
@@ -81,6 +93,7 @@ if(isset($_POST['submit'])){
         $_SESSION["l_autofill"] = $autofill;
         
         header("Location: index.php?login=usernotfound");
+
         exit();
     }
 
