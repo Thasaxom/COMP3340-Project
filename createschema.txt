@@ -5,20 +5,21 @@ CREATE TABLE BOOK (
 	price FLOAT
 	);
 CREATE TABLE USERS (
-	uid INT PRIMARY KEY,
+	uid INT PRIMARY KEY AUTO_INCREMENT,
 	admin BOOLEAN NOT NULL,
 	uname VARCHAR(40),
 	upasshashed VARCHAR(40),
 	salt VARCHAR(40),
-	address VARCHAR(40)
+	fname VARCHAR(40),
+	lname VARCHAR(40)
 );
 CREATE TABLE ORDERS (
-	oid int PRIMARY KEY,
+	oid int PRIMARY KEY AUTO_INCREMENT,
 	uid int,
 	isbn VARCHAR(13)
 );
 CREATE TABLE CARTS (
-	cid int PRIMARY KEY,
+	cid int PRIMARY KEY AUTO_INCREMENT,
 	uid int,
 	isbn VARCHAR(13)
 ); 

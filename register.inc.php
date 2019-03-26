@@ -36,7 +36,7 @@
             $date = date('H:i:s');
             $hashpwd = sha1($password.$date);
 
-            $sql = "INSERT into users (user, pass, salt,fname,lname) VALUES ('$email','$hashpwd','$date','$fname','$lname');";
+            $sql = "INSERT into users (uname, upasshashed, salt,fname,lname) VALUES ('$email','$hashpwd','$date','$fname','$lname');";
 
             mysqli_query($db,$sql);
             header("Location:  register.php?register=success");
