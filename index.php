@@ -46,7 +46,7 @@
 	<body onload="loadPage()">
 		<div id="container">
 			<div id="topbar">				
-				<a href="index.php"><img id="logo" src="images/logo.png"></a>
+				<a href="index.php"><img id="logo" src="images/logo.svg"></a>
 				<div id="navarea">
 					<div id="searcharea">
 						<input id="searchbar" type="text" placeholder="Search..">

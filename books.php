@@ -18,6 +18,8 @@
 		$sqls = "SELECT * FROM BOOK WHERE genre = '$genre'";
 	}
 	
+	$sqls = $sqls . " LIMIT 30";
+	
 	$responseString = "";
 	
 	if ($stmt = mysqli_prepare($db, $sqls)) {
