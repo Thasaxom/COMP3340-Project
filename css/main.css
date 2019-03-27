@@ -2,6 +2,7 @@ body {
 	font-family: Arial;
 	padding: 0;
 	margin: 0;
+	background-color: #4286f4;
 }
 
 div#container {
@@ -20,9 +21,17 @@ div#topbar {
 
 div#content {
 	display: flex;
-	flex-direction: row;
-	padding: 5px;
+	flex-flow: row wrap;
+	padding: 2em;
 
+}
+
+div.bookcontainer {
+	flex-basis: 18%;
+	border: 5px solid black;
+	border-radius: 10px;
+	padding: 0.2em;
+	margin-right: 0.5em;
 }
 
 div#navarea {

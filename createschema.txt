@@ -32,9 +32,8 @@ ALTER TABLE ORDERS ADD CONSTRAINT FK2 FOREIGN KEY (isbn) REFERENCES BOOK(isbn) O
 ALTER TABLE CARTS ADD CONSTRAINT FK3 FOREIGN KEY (uid) REFERENCES USERS(uid) ON DELETE CASCADE ON UPDATE RESTRICT;
 ALTER TABLE CARTS ADD CONSTRAINT FK4 FOREIGN KEY (isbn) REFERENCES BOOK(isbn) ON DELETE CASCADE ON UPDATE RESTRICT;
 
-
-
-// insert non-fiction 
+INSERT INTO `USERS` (`uid`, `admin`, `uname`, `upasshashed`, `salt`, `fname`, `lname`) VALUES
+(6, 1, 'admin@admin.com', '43fbd67b13f5d2fd88b89ae85c8767c81d75b73e', '11:48:33', 'zach', 'rivait');
 
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781481481328','One Cut (Simon True)','Porinchak, Eve','$26.99','Simon & Schuster','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978148/9781481481328-l.jpg',1);
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781534408999','Our Stories, Our Voices: 21 YA Authors Get Real About Injustice, Empowerment, and Growing Up Female in America','Reed, Amy (Edt)','$25.99','Simon & Schuster','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978153/9781534408999-l.jpg',1);
@@ -87,7 +86,6 @@ INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781250133885','Ready for It','Chusita Fashion Fever','$25.99','Imprint','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978125/9781250133885-l.jpg',1);
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781402739125','Calligraphy For Kids','Winters, Eleanor','$12.95','Sterling','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978140/9781402739125-l.jpg',1);
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9780060724917','A Little House Traveler','Wilder, Laura Ingalls','$22.99','Harper Collins','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978006/9780060724917-l.jpg',1);
-INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781481462495','On the Origin of Species (Young Readers Edition)','Stefoff, Rebecca (Adapted by)','$34.99','Atheneum Books','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978148/9781481462495-l.jpg',1);
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9780805098358','Eyes of the World: Robert Capa, Gerda Taro, and the Invention of Modern Photojournalism','Aronson, Marc','$30.77','Henry Holt & Company','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978080/9780805098358-l.jpg',1);
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781481489195','Obsessed: A Memoir of My Life with OCD','Britz, Allison','$15.99','Simon & Schuster','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978148/9781481489195-l.jpg',1);
 INSERT INTO BOOK(isbn,title,author,price,publisher,imagesrc,genre) VALUES ('9781454926931','Green Thumb Hangman (Sit & Solve)','Ketch, Jack','$10.95','Puzzle Wright Press','//bookdepot-lmwv1z0x2r9fdffrc7q.netdna-ssl.com/covers/large/isbn978145/9781454926931-l.jpg',1);

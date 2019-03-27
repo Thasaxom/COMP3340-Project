@@ -1,14 +1,11 @@
-function loginUI() {
-				
-	var loggedin = <?php echo $loggedin; ?>;
-	var email = '<? echo $email; ?>';
+function populateWithBooks(genre) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("content").innerHTML = this.responseText;
+		}
+	}
+	xmlhttp.open("GET", "http://rivaitz.myweb.cs.uwindsor.ca/books.php?genre=" + genre);
+	xmlhttp.send();
 	
-	if (loggedin === 1) {
-		document.getElementById("guest").style.display = "none";
-		document.getElementById("loggedin").style.display = "flex";
-	}
-	else {
-		document.getElementById("guest").style.display = "flex";
-		document.getElementById("loggedin").style.display = "none";
-	}
 }
