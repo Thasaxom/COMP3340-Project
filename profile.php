@@ -92,6 +92,16 @@ session_start();
         </div>
 		<input type="submit" name= "submit" value="submit">
 	</form>
+	
+	<form action="removeproduct.php" method="POST">
+        <h2>Remove Product</h2>
+        <div>
+            <label>ISBN</label>
+            <input type="text" name="risbn"  required maxlength="13">
+        </div>
+
+        <input type="submit" name= "submit" value="submit">
+    </form>
 
 </body>
 
