@@ -46,17 +46,15 @@
 							
 							var loggedin = <?php echo $loggedin; ?>;
 							var email = '<? echo $email; ?>';
-							alert(loggedin);
-							document.getElementById("test").innerHTML = loggedin;
-							if (loggedin == true) {
+							if (loggedin === 1) {
 								document.getElementById("guest").style.display = "none";
-								document.getElementById("loggedin").style.display = "flex";
+								document.getElementById("loggedin").style.display = "block";
 							}
 						}
 					</script>
 					<div id="loginarea" >
 						<div id="loggedin">
-							<form style="display: none;" action="logout.php">
+							<form action="logout.php">
 								<input type="submit" onclick="loginUI()" value="Logout">
 							</form>
 						</div>
