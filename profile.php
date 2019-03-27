@@ -9,7 +9,7 @@ session_start();
     }
     else{
             //guest 
-        header("location: login.php");
+        header("location: index.php");
         exit();
     }
 // load data to store on text box
