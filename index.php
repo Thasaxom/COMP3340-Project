@@ -41,7 +41,7 @@
 			populateWithBooks(0, "");
 		}
 		</script>
-</head>
+	</head>
 	
 	<body onload="loadPage()">
 		<div id="container">
@@ -79,6 +79,7 @@
 								<input type="submit" onclick="loginUI()" value="Logout">
 								<input type="button" onclick="location.href='profile.php'" value="Profile">
 								<p>You are logged in as <?php echo $email;?></p>
+								<a href="contactpage.htm">Contact Us!</a>
 							</form>
 						</div>
 					</div>
@@ -86,21 +87,6 @@
 			</div>			
 			<div id="content">
 			</div>
-		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		</div>	
 	</body>
 </html>

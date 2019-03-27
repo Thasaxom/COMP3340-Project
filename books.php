@@ -18,7 +18,6 @@
 		$sqls = "SELECT * FROM BOOK WHERE genre = '$genre'";
 	}
 	
-	error_log($sqls);
 	$responseString = "";
 	
 	if ($stmt = mysqli_prepare($db, $sqls)) {
