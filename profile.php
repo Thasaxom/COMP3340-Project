@@ -53,6 +53,10 @@ session_start();
 
         <input type="submit" name= "submit" value="submit">
     </form>
+	
+	<form style="display:<?php echo $_SESSION['admin'] === true ? 'block' : 'none'?>" action="addproduct.php">
+		<p>test</p>
+	</form>
 
 </body>
 
