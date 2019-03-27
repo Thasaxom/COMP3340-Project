@@ -93,7 +93,7 @@ session_start();
 		<input type="submit" name= "submit" value="submit">
 	</form>
 	
-	<form action="removeproduct.php" method="POST">
+	<form style="display:<?php echo $_SESSION['admin'] === true ? 'block' : 'none'?>" action="removeproduct.php" method="POST">
         <h2>Remove Product</h2>
         <div>
             <label>ISBN</label>
@@ -102,6 +102,8 @@ session_start();
 
         <input type="submit" name= "submit" value="submit">
     </form>
+	<br>
+	<input type="button" value="Return to Main Page" onclick="location.href='index.php'">
 
 </body>
 

@@ -28,6 +28,7 @@ div#content {
 
 div.bookcontainer {
 	display: flex;
+	flex-flow: column wrap;
 	flex-basis: 18%;
 	border: 5px solid black;
 	border-radius: 10px;
