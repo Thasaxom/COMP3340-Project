@@ -49,6 +49,16 @@ div#loginarea {
 	padding: 1em;
 }
 
+div#loggedin {
+	display: flex;
+	flex-direction: row;
+}
+
+div#guest {
+	display: flex;
+	flex-direction: row;
+}
+
 input#searchbar {
 	flex-grow: 1;
 	flex-basis:88%;
@@ -96,3 +106,4 @@ button.genrebutton:hover {
 	outline: 2px solid grey;
 	
 }
+

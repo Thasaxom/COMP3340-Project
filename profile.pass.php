@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     }
 
     $email = $_SESSION["email"];
-    $sqls = "select salt, upasshashed from users where uname = '$email'";
+    $sqls = "SELECT salt, upasshashed FROM USERS WHERE uname = '$email'";
 
     $salt = ''; // salt
     $up = ''; // phash
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 
         if( hash_equals($hashpwd, $up)){
 
-            $sql = "UPDATE USERS SET upasshashed= '$newhashpwd' WHERE uname='$e'"; // sql query 
+            $sql = "UPDATE USERS SET upasshashed= '$newhashpwd' WHERE uname='$email'"; // sql query 
             mysqli_query($db, $sql);
             header("Location:  profile.php?update_pass=success");
             exit();

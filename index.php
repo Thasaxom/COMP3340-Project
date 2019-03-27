@@ -2,13 +2,14 @@
 	
 	session_start();
 		
-	$loggedin = false;
+	$loggedin = 0;
 	$email = "";
 	
 	if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-		$loggedin = true;
+		$loggedin = 1;
 		$email = $_SESSION["email"];
 	}
+	
 ?>
 
 <html>
@@ -19,7 +20,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
+		<script src="js/index.js"></script>
+</head>
 	
 	<body onload="loginUI()">
 		<div id="container">
@@ -41,23 +43,7 @@
 						<button class="genrebutton">Fantasy</button>
 						<button class="genrebutton">Romance</button>						
 					</div>
-					<script>
-						function loginUI() {
-							
-							var loggedin = <?php echo $loggedin; ?>;
-							var email = '<? echo $email; ?>';
-							if (loggedin === 1) {
-								document.getElementById("guest").style.display = "none";
-								document.getElementById("loggedin").style.display = "block";
-							}
-						}
-					</script>
 					<div id="loginarea" >
-						<div id="loggedin">
-							<form action="logout.php">
-								<input type="submit" onclick="loginUI()" value="Logout">
-							</form>
-						</div>
 						<div id="guest">
 							<form action="login.inc.php" method="post">
 								<input id="userbar" name="email" type="text" placeholder="Username">
@@ -66,6 +52,13 @@
 							</form>
 							<form action="register.php">
 								<input type="submit" value="Register">
+							</form>
+						</div>
+						<div id="loggedin">
+							<form action="logout.php">
+								<input type="submit" onclick="loginUI()" value="Logout">
+								<input type="button" onclick="location.href='profile.php'" value="Profile">
+								<p>You are logged in as <?php echo $email;?></p>
 							</form>
 						</div>
 					</div>
