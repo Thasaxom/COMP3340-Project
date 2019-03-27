@@ -79,9 +79,10 @@
 								<input type="submit" onclick="loginUI()" value="Logout">
 								<input type="button" onclick="location.href='profile.php'" value="Profile">
 								<p>You are logged in as <?php echo $email;?></p>
-								<a href="contactpage.htm">Contact Us!</a>
+								
 							</form>
 						</div>
+						<a href="contactpage.htm">Contact Us!</a>
 					</div>
 				</div>
 			</div>			

@@ -5,8 +5,32 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=5lsgsgl8br064qf6a7u791yw51rkxz9d8ot1npe6dw9fjv39"></script>
+		<script>tinymce.init({ selector:'textarea' });</script>
 	</head>
 	<body>
+		<div id="container">
+		<div id="topbar">				
+			<a href="index.php"><img id="logo" src="images/logo.svg"></a>
+			<div id="navarea">
+				<div id="searcharea">
+					<input id="searchbar" type="text" placeholder="Search..">
+					<button onclick="populateWithBooks(0, document.getElementById('searchbar').value)" id="searchbutton">Search</button>
+				</div>
+				
+				<h1 id="title">The Greatest Book Store on the Internet</h1>
+				<div id="genrearea">
+					<button class="genrebutton" onclick="populateWithBooks(1, '')">Non-Fiction</button>
+					<button class="genrebutton" onclick="populateWithBooks(2, '')">Fiction</button>
+					<button class="genrebutton" onclick="populateWithBooks(3, '')">Horror</button>
+					<button class="genrebutton" onclick="populateWithBooks(4, '')">Mystery</button>
+					<button class="genrebutton" onclick="populateWithBooks(5, '')">Science Fiction</button>
+					<button class="genrebutton" onclick="populateWithBooks(6, '')">Fantasy</button>
+					<button class="genrebutton" onclick="populateWithBooks(7, '')">Romance</button>						
+				</div>
+			</div>
+		</div>					
+	</div>
 		<form name="contactform" method="post" action="email.php">
 			<table width="450px">
 				<tr>
