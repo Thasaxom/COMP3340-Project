@@ -9,8 +9,8 @@ session_start();
     }
     else{
             //guest 
-        header("location: index.php");
-        exit();
+    header("location: index.php");
+    exit();
     }
 // load data to store on text box
 ?>
@@ -54,8 +54,43 @@ session_start();
         <input type="submit" name= "submit" value="submit">
     </form>
 	
-	<form style="display:<?php echo $_SESSION['admin'] === true ? 'block' : 'none'?>" action="addproduct.php">
-		<p>test</p>
+	<form style="display:<?php echo $_SESSION['admin'] === true ? 'block' : 'none'?>" action="addproduct.php" method="POST">
+		<h2>Add Product</h2>
+		<div>
+            <label>ISBN</label>
+            <input type="text" name="isbn"  required maxlength="13">
+        </div>
+		<div>
+            <label>Title</label>
+            <input type="text" name="title"  required>
+        </div>
+		<div>
+            <label>Author</label>
+            <input type="text" name="author"  required>
+        </div>
+		<div>
+            <label>Price</label>
+            <input type="text" name="price"  required>
+        </div>
+		<div>
+            <label>Publisher</label>
+            <input type="text" name="publisher"  required>
+        </div>
+		<div>
+            <label>Cover Image URL</label>
+            <input type="text" name="imagesrc"  required>
+        </div>
+		<div>
+            <label>Genre</label><br>
+            <input type="radio" name="genre" value="1" required>Non-fiction<br>
+			<input type="radio" name="genre" value="2" required>Fiction<br>
+			<input type="radio" name="genre" value="3" required>Horror<br>
+			<input type="radio" name="genre" value="4" required>Mystery<br>
+			<input type="radio" name="genre" value="5" required>Science Fiction<br>
+			<input type="radio" name="genre" value="6" required>Fantasy<br>
+			<input type="radio" name="genre" value="7" required>Romance<br>
+        </div>
+		<input type="submit" name= "submit" value="submit">
 	</form>
 
 </body>
