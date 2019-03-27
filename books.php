@@ -1,9 +1,18 @@
 <?php
 
 	include_once 'config.php';
+	
 	$genre = mysqli_real_escape_string($db,$_REQUEST['genre']);
+	$searchtext = mysqli_real_escape_string($db,$_REQUEST['searchtext']);
+	
 	if($genre == 0) {
 		$sqls = "SELECT * FROM BOOK";
+		if($searchtext != "") {
+			$sqls = $sqls . 
+			" WHERE isbn LIKE CONCAT('%', '$searchtext', '%') OR " .
+			"title LIKE CONCAT('%', '$searchtext', '%') OR " .
+			"author LIKE CONCAT('%', '$searchtext', '%')";
+		}
 	}
 	else {
 		$sqls = "SELECT * FROM BOOK WHERE genre = '$genre'";

@@ -38,7 +38,7 @@
 		}
 		function loadPage() {
 			loginUI();
-			populateWithBooks(0);
+			populateWithBooks(0, "");
 		}
 		</script>
 </head>
@@ -50,18 +50,18 @@
 				<div id="navarea">
 					<div id="searcharea">
 						<input id="searchbar" type="text" placeholder="Search..">
-						<button id="searchbutton">Search</button>
+						<button onclick="populateWithBooks(0, document.getElementById('searchbar').value)" id="searchbutton">Search</button>
 					</div>
 					
 					<h1 id="title">The Greatest Book Store on the Internet</h1>
 					<div id="genrearea">
-						<button class="genrebutton">Non-Fiction</button>
-						<button class="genrebutton">Fiction</button>
-						<button class="genrebutton">Horror</button>
-						<button class="genrebutton">Mystery</button>
-						<button class="genrebutton">Science Fiction</button>
-						<button class="genrebutton">Fantasy</button>
-						<button class="genrebutton">Romance</button>						
+						<button class="genrebutton" onclick="populateWithBooks(1, '')">Non-Fiction</button>
+						<button class="genrebutton" onclick="populateWithBooks(2, '')">Fiction</button>
+						<button class="genrebutton" onclick="populateWithBooks(3, '')">Horror</button>
+						<button class="genrebutton" onclick="populateWithBooks(4, '')">Mystery</button>
+						<button class="genrebutton" onclick="populateWithBooks(5, '')">Science Fiction</button>
+						<button class="genrebutton" onclick="populateWithBooks(6, '')">Fantasy</button>
+						<button class="genrebutton" onclick="populateWithBooks(7, '')">Romance</button>						
 					</div>
 					<div id="loginarea" >
 						<div id="guest">
